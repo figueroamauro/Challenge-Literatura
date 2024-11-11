@@ -17,7 +17,11 @@ public class AuthorService {
     }
 
     public List<Author> findAll() {
-         return repository.findAll();
+        List<Author> list = repository.findAll();
+        if (list.isEmpty()) {
+            throw new IllegalArgumentException("No se encontraron datos");
+        }
+        return list;
     }
 
     public Author findById(Long id) {
