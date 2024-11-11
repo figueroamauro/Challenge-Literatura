@@ -1,13 +1,24 @@
 package ar.com.old.literatura.models;
 
+import jakarta.persistence.*;
+
 import java.util.List;
 
+@Entity
 public class Book {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
+    @ElementCollection
     private List<String> languages;
+    @ManyToMany
     private List<Author> authors;
     private int downloadCount;
+
+    public Book() {
+    }
 
     public Book(Long id, String title, List<String> languages, List<Author> authors, int downloadCount) {
         this.id = id;

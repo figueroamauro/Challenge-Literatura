@@ -24,7 +24,7 @@ public class AuthorService {
         return list;
     }
 
-    public Author findById(Long id) {
+    public Author findById(Long id) throws IllegalArgumentException{
         Optional<Author> opt = repository.findById(id);
         if (opt.isPresent()) {
             return opt.get();
